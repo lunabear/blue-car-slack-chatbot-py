@@ -11,6 +11,7 @@ from constants import AZURE_OPENAI_API_KEY, AZURE_OPENAI_ENDPOINT, AZURE_OPENAI_
     AZURE_OPENAI_API_VERSION, AZURE_SEARCH_INDEX_NAME, AZURE_SEARCH_ADMIN_KEY, AZURE_SEARCH_SERVICE_ENDPOINT
 from utils.langchain_util import get_chat_azure_openai_client, LLMNames
 from utils.s3_utils import get_object_contents
+import openai
 
 
 def query_to_llm(query: str) -> str:
@@ -75,6 +76,15 @@ def get_vector_store():
     return vector_store
 
 
+def test():
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[{"role": "user", "content": f"한국의 수도는?"}]
+    )
+
+    print(response)
+
+
 def insert_to_vector_store(s3_key: str):
     vector_store = get_vector_store()
 
@@ -113,4 +123,5 @@ def insert_to_vector_store(s3_key: str):
 if __name__ == '__main__':
     # s3_key = 'gs_insa_test.pdf'
     # insert_to_vector_store(s3_key)
+    # test()
     print(query_to_llm('1+1은?'))
