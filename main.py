@@ -27,14 +27,14 @@ def test(message, say):
 
 @app.event("message")
 def handle_direct_message(message, say):
-    # response = openai.ChatCompletion.create(
-    #     model="gpt-3.5-turbo",
-    #     messages=[{"role": "user", "content": f"{message['text']}"}]
-    # )
-    #
-    # print(response)
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[{"role": "user", "content": f"{message['text']}"}]
+    )
+
+    print(response)
     # say(response.choices[0].message.content)
-    say(query_to_llm(message['text']))
+    say(str(query_to_llm(message['text'])))
 
 @app.event("app_mention")
 def handle_mention(message, say):

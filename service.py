@@ -113,4 +113,4 @@ def insert_to_vector_store(s3_key: str):
 if __name__ == '__main__':
     # s3_key = 'gs_insa_test.pdf'
     # insert_to_vector_store(s3_key)
-    query_to_llm('1+1은?')
+    print(query_to_llm('1+1은?'))
