@@ -31,7 +31,8 @@ def handle_direct_message(message, say):
     )
     
     print(response)
-    say(response.choices[0].message.content)
+    # say(response.choices[0].message.content)
+    say('always says this')
 
 @app.event("app_mention")
 def handle_mention(message, say):
