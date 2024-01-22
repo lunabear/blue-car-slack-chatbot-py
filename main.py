@@ -32,9 +32,10 @@ def handle_direct_message(message, say):
         messages=[{"role": "user", "content": f"{message['text']}"}]
     )
 
+    print('************************')
     print(response)
-    # say(response.choices[0].message.content)
-    say(str(query_to_llm(message['text'])))
+    say(response.choices[0].message.content)
+    # say(str(query_to_llm(message['text'])))
 
 @app.event("app_mention")
 def handle_mention(message, say):
