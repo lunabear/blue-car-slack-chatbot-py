@@ -1,6 +1,9 @@
 import os
 import requests
 from dotenv import load_dotenv
+
+from service import query_to_llm
+
 load_dotenv()
 
 import openai
@@ -36,14 +39,15 @@ def handle_direct_message(message, say):
 
 @app.event("app_mention")
 def handle_mention(message, say):
-
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[{"role": "user", "content": f"{message['text']}"}]
-    )
-    
-    print(response)
-    say(response.choices[0].message.content)
+    #
+    # response = openai.ChatCompletion.create(
+    #     model="gpt-3.5-turbo",
+    #     messages=[{"role": "user", "content": f"{message['text']}"}]
+    # )
+    #
+    # print(response)
+    # say(response.choices[0].message.content)
+    say(query_to_llm(message['text']))
 
 if __name__ == "__main__":
     handler = SocketModeHandler(app, os.environ.get("SLACK_APP_TOKEN"))
