@@ -5,7 +5,6 @@ DEFAULT_REGION = 'ap-northeast-2'
 # S3_BUCKET_NAME_FORMAT = 'dev-{region}-proj-name-storage'
 S3_BUCKET_NAME = 'zappa-workchat-test'
 
-
 AZURE_SEARCH_SERVICE_ENDPOINT='https://prompton52g-aisearch-02.search.windows.net'
 AZURE_SEARCH_INDEX_NAME='blue-car'
 AZURE_SEARCH_ADMIN_KEY='35oWS5jQxuSGye3D4n51eGbfW2HNqXxCtsXKXS6DFPAzSeDQtLa0'
