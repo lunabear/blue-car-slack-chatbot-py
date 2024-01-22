@@ -27,19 +27,6 @@ def test(message, say):
 
 @app.event("message")
 def handle_direct_message(message, say):
-
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[{"role": "user", "content": f"{message['text']}"}]
-    )
-    
-    print(response)
-    # say(response.choices[0].message.content)
-    say('always says this')
-
-@app.event("app_mention")
-def handle_mention(message, say):
-    #
     # response = openai.ChatCompletion.create(
     #     model="gpt-3.5-turbo",
     #     messages=[{"role": "user", "content": f"{message['text']}"}]
@@ -48,6 +35,16 @@ def handle_mention(message, say):
     # print(response)
     # say(response.choices[0].message.content)
     say(query_to_llm(message['text']))
+
+@app.event("app_mention")
+def handle_mention(message, say):
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[{"role": "user", "content": f"{message['text']}"}]
+    )
+
+    print(response)
+    say(response.choices[0].message.content)
 
 if __name__ == "__main__":
     handler = SocketModeHandler(app, os.environ.get("SLACK_APP_TOKEN"))
