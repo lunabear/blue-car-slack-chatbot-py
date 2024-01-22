@@ -40,6 +40,8 @@ def query_to_llm(query: str) -> str:
 
 
 def get_vector_store():
+    print('===============')
+    print(AZURE_OPENAI_ENDPOINT)
     embeddings: OpenAIEmbeddings = AzureOpenAIEmbeddings(
         azure_deployment=AZURE_OPENAI_EMBEDDING_DEPLOYED_MODEL,
         model=AZURE_OPENAI_EMBEDDING_DEPLOYED_MODEL,
