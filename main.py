@@ -27,6 +27,7 @@ def test(message, say):
 
 @app.event("message")
 def handle_direct_message(message, say):
+    print(message)
     # response = openai.ChatCompletion.create(
     #     model="gpt-3.5-turbo",
     #     messages=[{"role": "user", "content": f"{message['text']}"}]
