@@ -37,7 +37,7 @@ def query_to_llm(query: str) -> str:
 
     )
 
-    return qa.invoke(query)
+    return qa.invoke(query)['result']
 
 
 def get_vector_store():
